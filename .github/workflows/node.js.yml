@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Run test
 
 on:
   push:
@@ -19,9 +19,9 @@ jobs:
         image: postgres:latest
 
         env:
-          POSTGRES_USER: test
-          POSTGRES_PASSWORD: test
-          POSTGRES_DB: test_db
+          POSTGRES_USER: ${{ secrets.DB_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.DB_NAME }}
 
         ports:
           - 5432:5432
