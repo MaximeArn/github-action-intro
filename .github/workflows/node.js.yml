@@ -16,7 +16,24 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x, 20.x, 22.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    services:
+      postgres:
+        image: postgres:latest
+
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: test_db
+
+        ports:
+          - 5432:5432
+
+        options: >-
+          --health-cmd pg_isready  # Commande pour vérifier si PG est prêt
+          --health-interval 10s    # Vérifier toutes les 10s
+          --health-timeout 5s      # Timeout de la vérification
+          --health-retries 5       # Nombre de tentatives avant d'échouer
 
     steps:
       - uses: actions/checkout@v4
