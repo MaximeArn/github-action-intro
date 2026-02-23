@@ -1,11 +1,11 @@
 const { Pool } = require("pg");
 
 const pool = new Pool({
-  user: "test",
-  host: "localhost",
-  database: "test_db",
-  password: "test",
-  port: 5432,
+  user: process.env.DB_USER || "test",
+  host: process.env.DB_HOST || "localhost",
+  database: process.env.DB_NAME || "test_db",
+  password: process.env.DB_PASSWORD || "test",
+  port: process.env.DB_PORT || 5432,
 });
 
 const saveUser = async (userValues) => {
