@@ -7,7 +7,7 @@ app.use(express.json());
 
 app.get("/api/object", (req, res) => {
   res.status(200).json({
-    message: "Hello, World everybody!",
+    message: "Hello, world everybody!",
     timestamp: new Date(),
     status: "success",
   });
